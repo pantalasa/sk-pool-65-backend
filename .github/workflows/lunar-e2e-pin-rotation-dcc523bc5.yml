@@ -1,0 +1,17 @@
+name: lunar-e2e-pin-rotation-dcc523bc5
+on:
+  pull_request:
+    types: [opened, labeled]
+permissions:
+  contents: read
+jobs:
+  ready:
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-24.04
+    steps:
+      - run: /bin/echo 'pin rotation PR opened dcc523bc5'
+  ci:
+    if: github.event.action == 'labeled' && github.event.label.name == 'e2e-pin-rotation-dcc523bc5'
+    runs-on: localdev-e2e-test-37206991269-1-github-5-e2e
+    steps:
+      - run: /bin/echo 'pin rotation CI dcc523bc5'
